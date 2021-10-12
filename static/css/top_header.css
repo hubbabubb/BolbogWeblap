@@ -1,0 +1,9 @@
+.header {
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 80px;
+    position: fixed;
+    background: rgb(251,246,255);
+    background: linear-gradient(180deg, rgba(251, 246, 255, 0.7) 25%, rgba(240, 221, 255, 0.76) 100%);
+}

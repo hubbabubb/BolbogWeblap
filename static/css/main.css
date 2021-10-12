@@ -1,0 +1,13 @@
+body {
+    background: rgb(251,246,255);
+    font-family: 'Raleway', sans-serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+
+.container {
+    margin-top: 150px;
+}

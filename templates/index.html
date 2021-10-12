@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container" id="container">
+        <img src="{{ url_for('static', filename='img/home_art.jpg') }}" alt="home" class="home-image" id="image"/>
+        <div class="row">
+            <h3>
+                Képzeld el, hogy egy végtelen kozmikus tér része vagy, egyedülállóan, mégis egy hatalmas rendszer
+                részeként...
+                Képzeld el, hogy ezt a teret Te is alakítod, minden gondolattal, minden lélegzetvétellel...
+            </h3>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    text-align: center;
+}
+
+.home-image {
+    margin: 70px 0 50px 0;
+    object-fit: cover;
+    object-position: top;
+    height: 400px;
+    width: 70%;
+    border-radius: 15px;
+    box-shadow: 5px 5px;
+    animation-name: image-flow;
+    animation-duration: 80s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes image-flow {
+    0% {
+        object-position: top;
+    }
+    50% {
+        object-position: bottom;
+    }
+    100% {
+        object-position: top;
+    }
+}
+
+.row {
+    padding: 0 100px 0 100px;
+}
+
+h3 {
+    font-size: 33px;
+    font-weight: 300;
+    font-style: italic;
+}

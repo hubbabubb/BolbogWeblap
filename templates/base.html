@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Anything.</title>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/top_header.css') }}">
+{#    <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">#}
+
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+    <header class="header">
+
+    </header>
+
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+
+</body>
+</html>
