@@ -1,5 +1,19 @@
 import re
 import bcrypt
+from werkzeug.utils import secure_filename
+import os
+
+
+def allowed_file(filename):
+    extensions = ["PNG", "JPG", "JPEG", "GIF"]
+
+    if "." not in filename:
+        return False
+    extension = filename.rsplit(".", 1)[1]
+    if extension.upper() in extensions:
+        return True
+    else:
+        return False
 
 
 def hash_password(plain_text_password):
@@ -11,6 +25,15 @@ def verify_password(plain_text_password, hashed_password):
     hashed_bytes_password = hashed_password.encode('utf-8')
     return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_bytes_password)
 
+
+def get_image(image, path):
+    image_name = None
+    if image.filename:
+        if allowed_file(image.filename):
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(path, filename))
+            image_name = "images/" + filename
+    return image_name
 
 # def highlight_text(search_results, search):
 #     new_results = []

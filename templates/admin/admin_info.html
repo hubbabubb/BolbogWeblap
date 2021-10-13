@@ -5,5 +5,38 @@
 {% endblock %}
 
 {% block body %}
-
+    <h1>Cég információk és elérhetőségek</h1>
+    <form action="/admin/info" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Név:</label>
+            <input value="{{ basic_info['name'] }}" type="text" name="name" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Telefonszám:</label>
+            <input value="{{ basic_info['telephone_number'] }}" type="text" name="telephone_number" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">E-mail cím:</label>
+            <input value="{{ basic_info['email'] }}" type="email" name="email" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Cím:</label>
+            <input value="{{ basic_info['address'] }}" type="text" name="address" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Cég leírás:</label>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"
+                      required>{{ basic_info['description'] }}</textarea>
+        </div>
+    <button class="btn btn-outline-info" type="submit">Mentés</button>
+    </form>
+    <hr class="custom">
 {% endblock %}

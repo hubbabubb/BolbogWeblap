@@ -5,10 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    {% for info in company_info %}
-        <h1>{{ info['name'] }}</h1>
-        <h2>{{ info['telephone_number'] }}</h2>
-        <h3>{{ info['email'] }}</h3>
-        <p>{{ info['description'] }}</p>
-    {% endfor %}
+    <h1>{{ company_info['name'] }}</h1>
+    <h4>{{ company_info['email'] }}, {{ company_info['telephone_number'] }}</h4>
+    <p>{{ company_info['description'] }}</p>
 {% endblock %}

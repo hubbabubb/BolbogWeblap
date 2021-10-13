@@ -8,11 +8,20 @@
     <a class="btn btn-outline-primary btn-lg" href="/admin/add-content">Új bejegyzés hozzáadása</a>
     <h1>Bejegyzések:</h1>
     {% for content in contents %}
-        <h2>{{ content['title'] }}</h2>
+        {% if content['public'] == True %}
+            <span class="badge bg-primary">Publikált</span>
+        {% else %}
+            <span class="badge bg-danger">Privát</span>
+        {% endif %}
+        <h2>
+            {{ content['title'] }}
+        </h2>
         <p>{{ content['description'] }}...</p>
         <p>{{ content['category'].upper() }}</p>
-        <a class="btn btn-outline-info btn-sm" href="/admin/edit-content/{{ content['id'] }}"><i class="bi bi-pencil-square"></i> Szerkesztés</a>
-        <a class="btn btn-outline-danger btn-sm" href="/admin/delete-content/{{ content['id'] }}"><i class="bi bi-trash"></i> Törlés</a>
-        <hr>
+        <a class="btn btn-outline-info btn-sm" href="/admin/edit-content/{{ content['id'] }}"><i
+                class="bi bi-pencil-square"></i> Szerkesztés</a>
+        <a class="btn btn-outline-danger btn-sm" href="/admin/delete-content/{{ content['id'] }}"><i
+                class="bi bi-trash"></i> Törlés</a>
+        <hr class="custom">
     {% endfor %}
 {% endblock %}

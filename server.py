@@ -6,6 +6,7 @@ from flask import Flask, render_template, session, redirect, request
 
 app = Flask(__name__)
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=6)
+app.config['IMAGE_UPLOADS'] = "static/images"
 app.secret_key = 'my super secret key'.encode('utf8')
 
 
@@ -45,12 +46,26 @@ def logout():
 
 
 @app.route('/admin')
-@app.route('/admin/info')
+@app.route('/admin/info', methods=['POST', 'GET'])
 def admin():
     if 'logged_in' not in session:
         return redirect('/login')
 
-    return render_template('admin/admin_info.html')
+    if request.method == 'POST':
+        data = {
+            'name': request.form['name'],
+            'telephone_number': request.form['telephone_number'],
+            'email': request.form['email'],
+            'address': request.form['address'],
+            'description': request.form['description'],
+        }
+
+        data_manager.update_info(data)
+
+    basic_info = data_manager.get_company_info()
+    admin_info = data_manager.get_admin()
+
+    return render_template('admin/admin_info.html', basic_info=basic_info, admin_info=admin_info)
 
 
 @app.route('/admin/content')
@@ -59,7 +74,6 @@ def admin_content():
         return redirect('/login')
 
     all_contents = data_manager.get_all_content_preview()
-
     return render_template('admin/page_content.html', contents=all_contents)
 
 
@@ -75,10 +89,12 @@ def add_content():
 
 @app.route('/admin/save-content', methods=['POST'])
 def save_content():
-
+    image = request.files["image"]
+    path = app.config['IMAGE_UPLOADS']
+    image_name = util.get_image(image, path)
     data = {"title": request.form['title'],
             "description": request.form['content'],
-            "image": request.form['image'],
+            "image": image_name,
             "public": True if 'public' in request.form else False,
             "last_modified": datetime.now(),
             "category": request.form['category']}
@@ -113,10 +129,9 @@ def delete_content(content_id):
     return redirect('/admin/content')
 
 
-@app.route('/about')
+@app.route('/elerhetoseg')
 def about():
     company_info = data_manager.get_company_info()
-
     return render_template('about.html', company_info=company_info)
 
 

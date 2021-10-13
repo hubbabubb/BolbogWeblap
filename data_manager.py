@@ -6,7 +6,7 @@ import connection
 @connection.connection_handler
 def get_all_content_preview(cursor: RealDictCursor):
     query = """
-        SELECT id, title, SUBSTRING(description from 0 for 200) as description, category
+        SELECT id, title, SUBSTRING(description from 0 for 200) as description, category, public
         FROM content
         ORDER BY category"""
     cursor.execute(query)
@@ -36,9 +36,10 @@ def get_all_users(cursor: RealDictCursor):
 def get_company_info(cursor: RealDictCursor):
     query = """
         SELECT *
-        FROM company_info"""
+        FROM company_info
+        WHERE id = 1"""
     cursor.execute(query)
-    return cursor.fetchall()
+    return cursor.fetchall()[0]
 
 
 def get_public_categories():
@@ -137,3 +138,14 @@ def delete_content(cursor: RealDictCursor, content_id):
         """
 
     cursor.execute(query, content_id)
+
+
+@connection.connection_handler
+def update_info(cursor: RealDictCursor, data):
+    query = """UPDATE company_info
+                SET name = %s, telephone_number = %s, email = %s, address = %s, description = %s
+                WHERE id = 1
+        """
+    values = [data['name'], data['telephone_number'], data['email'], data['address'], data['description']]
+
+    cursor.execute(query, values)
