@@ -1,6 +1,6 @@
 .container {
     width: 300px;
-    height: 300px;
+    height: auto;
     background-color: rgba(255, 255, 255, 0.37);
     padding: 20px;
     border-radius: 10px;
