@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Kapcsolat</title>
+{% endblock %}
+
+{% block body %}
+    {% for info in company_info %}
+        <h1>{{ info['name'] }}</h1>
+        <h2>{{ info['telephone_number'] }}</h2>
+        <h3>{{ info['email'] }}</h3>
+        <p>{{ info['description'] }}</p>
+    {% endfor %}
+{% endblock %}

@@ -1,5 +1,6 @@
 body {
-    background: rgb(251,246,255);
+    background: rgb(249,241,255);
+    background: linear-gradient(150deg, rgba(249,241,255,1) 0%, rgba(252,249,255,1) 100%);
     font-family: 'Raleway', sans-serif;
 }
 

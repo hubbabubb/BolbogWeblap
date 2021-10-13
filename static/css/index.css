@@ -4,7 +4,7 @@
 }
 
 .home-image {
-    margin: 70px 0 50px 0;
+    margin: 50px 0 50px 0;
     object-fit: cover;
     object-position: top;
     height: 400px;
@@ -33,7 +33,30 @@
 }
 
 h3 {
-    font-size: 33px;
-    font-weight: 300;
+    font-size: 34px;
+    font-weight: 100;
     font-style: italic;
+}
+
+.contentDiv {
+    position: relative;
+    margin-top: 80px;
+}
+
+@keyframes bouncing {
+    0% {bottom: 0;}
+    50% {bottom: 10px;}
+    100% {bottom: 0;}
+}
+
+.arrow {
+    font-size: 50px;
+    animation: bouncing 2s infinite ease-in-out;
+    bottom: 0;
+    display: block;
+    height: 50px;
+    left: 50%;
+    margin-left: -25px;
+    position: absolute;
+    width: 50px;
 }

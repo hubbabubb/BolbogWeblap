@@ -5,14 +5,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container" id="container">
-        <img src="{{ url_for('static', filename='img/home_art.jpg') }}" alt="home" class="home-image" id="image"/>
-        <div class="row">
-            <h3>
-                Képzeld el, hogy egy végtelen kozmikus tér része vagy, egyedülállóan, mégis egy hatalmas rendszer
-                részeként...
-                Képzeld el, hogy ezt a teret Te is alakítod, minden gondolattal, minden lélegzetvétellel...
-            </h3>
+    <img src="{{ url_for('static', filename='img/home_art.jpg') }}" alt="home" class="home-image" id="image"/>
+    <div class="row">
+        <h3>
+            Képzeld el, hogy egy végtelen kozmikus tér része vagy, egyedülállóan, <br>
+            mégis egy hatalmas rendszer részeként... <br>
+            Képzeld el, hogy ezt a teret Te is alakítod, minden gondolattal, <br>
+            minden lélegzetvétellel...
+        </h3>
+    </div>
+    <div class="contentDiv">
+        <div class="arrow">
+            <a href="/about">
+                <i class="bi bi-caret-down"></i>
+            </a>
         </div>
     </div>
 {% endblock %}
