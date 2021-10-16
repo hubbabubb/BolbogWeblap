@@ -1,7 +1,17 @@
 import re
 import bcrypt
 from werkzeug.utils import secure_filename
-import os
+from PIL import Image
+
+
+def hash_password(plain_text_password):
+    hashed_bytes = bcrypt.hashpw(plain_text_password.encode('utf-8'), bcrypt.gensalt())
+    return hashed_bytes.decode('utf-8')
+
+
+def verify_password(plain_text_password, hashed_password):
+    hashed_bytes_password = hashed_password.encode('utf-8')
+    return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_bytes_password)
 
 
 def allowed_file(filename):
@@ -16,24 +26,11 @@ def allowed_file(filename):
         return False
 
 
-def hash_password(plain_text_password):
-    hashed_bytes = bcrypt.hashpw(plain_text_password.encode('utf-8'), bcrypt.gensalt())
-    return hashed_bytes.decode('utf-8')
-
-
-def verify_password(plain_text_password, hashed_password):
-    hashed_bytes_password = hashed_password.encode('utf-8')
-    return bcrypt.checkpw(plain_text_password.encode('utf-8'), hashed_bytes_password)
-
-
-def get_image(image, path):
-    image_name = None
-    if image.filename:
-        if allowed_file(image.filename):
-            filename = secure_filename(image.filename)
-            image.save(os.path.join(path, filename))
-            image_name = "images/" + filename
+def get_image_name(image):
+    filename = secure_filename(image.filename)
+    image_name = "images/" + filename
     return image_name
+
 
 # def highlight_text(search_results, search):
 #     new_results = []
@@ -52,3 +49,14 @@ def get_image(image, path):
 #         new_results.append(new_dict_row)
 #
 #     return new_results
+
+
+def image_direction(image_name):
+    image = Image.open('static/' + image_name)
+    direction = 'equal'
+    if image.width/image.height > 1:
+        direction = 'horizontal'
+    elif image.width/image.height < 1:
+        direction = 'vertical'
+
+    return direction

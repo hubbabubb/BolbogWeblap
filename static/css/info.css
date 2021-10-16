@@ -1,0 +1,37 @@
+.categories {
+    width: 100%;
+    padding: 15px 50px 15px 50px;
+    background: rgb(249,241,255);
+    background: linear-gradient(90deg, rgba(249,241,255,0) 0%, rgba(83,2,117,0.1516981792717087) 50%, rgba(252,249,255,0) 100%);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+     white-space: pre-wrap;
+}
+
+.category {
+    color: black;
+    text-decoration: none;
+    font-family: 'Montserra t', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    transition: color 0.5s;
+}
+
+.category:hover {
+    color: #b15326;
+}
+
+.content {
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid black;
+}
+
+.badge {
+    margin: 0 5px 10px 0;
+}
+
+.new {
+    margin-top: 30px;
+}

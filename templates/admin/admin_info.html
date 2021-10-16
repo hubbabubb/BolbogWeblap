@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <a class="btn btn-lg btn-primary" href="{{ url_for('admin_content') }}">Bejegyzések szerkesztése</a>
     <h1>Cég információk és elérhetőségek</h1>
     <form action="/admin/info" method="post">
         <div class="mb-3">

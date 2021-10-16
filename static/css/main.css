@@ -10,6 +10,11 @@ p {
     white-space: pre-wrap;
 }
 
+p.alert {
+    color: red;
+    font-size: 18px;
+}
+
 hr.custom {
     margin-top: 50px;
     margin-bottom: 50px;

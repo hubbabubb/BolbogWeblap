@@ -2,8 +2,45 @@
     width: 100%;
     left: 0;
     top: 0;
-    height: 80px;
+    height: 125px;
     position: fixed;
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
     background: rgb(251,246,255);
     background: linear-gradient(180deg, rgba(251, 246, 255, 0.7) 25%, rgba(240, 221, 255, 0.76) 100%);
+}
+
+.admin {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    /*margin: 10px auto 10px auto;*/
+}
+
+.menu {
+    text-align: center;
+    width: 300px;
+    text-decoration: none;
+    color: black;
+    margin-top: 80px;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    transition: color 0.5s;
+}
+
+.menu:hover {
+    color: #b15326;
+}
+
+.logo {
+    margin-top: 10px;
+    width: 325px;
+    height: 175px;
+}
+
+.header .container {
+    padding: 0;
+    margin: 0;
 }

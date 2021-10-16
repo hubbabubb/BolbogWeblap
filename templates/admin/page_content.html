@@ -2,26 +2,32 @@
 
 {% block head %}
     <title>Holnap tartalom szerkesztés</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/info.css') }}">
 {% endblock %}
 
 {% block body %}
-    <a class="btn btn-outline-primary btn-lg" href="/admin/add-content">Új bejegyzés hozzáadása</a>
+    <div class="row">
+        <a class="btn btn-outline-primary btn-lg new" href="/admin/add-content">Új bejegyzés hozzáadása</a>
+    </div>
+
     <h1>Bejegyzések:</h1>
     {% for content in contents %}
-        {% if content['public'] == True %}
-            <span class="badge bg-primary">Publikált</span>
-        {% else %}
-            <span class="badge bg-danger">Privát</span>
-        {% endif %}
-        <h2>
-            {{ content['title'] }}
-        </h2>
-        <p>{{ content['description'] }}...</p>
-        <p>{{ content['category'].upper() }}</p>
-        <a class="btn btn-outline-info btn-sm" href="/admin/edit-content/{{ content['id'] }}"><i
-                class="bi bi-pencil-square"></i> Szerkesztés</a>
-        <a class="btn btn-outline-danger btn-sm" href="/admin/delete-content/{{ content['id'] }}"><i
-                class="bi bi-trash"></i> Törlés</a>
+        <div class="content">
+            <span class="badge bg-info">{{ content['category'].upper() }}</span>
+            {% if content['public'] == True %}
+                <span class="badge bg-primary">Publikált</span>
+            {% else %}
+                <span class="badge bg-danger">Privát</span>
+            {% endif %}
+            <h2>
+                {{ content['title'] }}
+            </h2>
+            <p>{{ content['description'] }}...</p>
+            <a class="btn btn-outline-info btn-sm" href="/admin/edit-content/{{ content['id'] }}"><i
+                    class="bi bi-pencil-square"></i> Szerkesztés</a>
+            <a class="btn btn-outline-danger btn-sm" href="/admin/delete-content/{{ content['id'] }}"><i
+                    class="bi bi-trash"></i> Törlés</a>
+        </div>
         <hr class="custom">
     {% endfor %}
 {% endblock %}

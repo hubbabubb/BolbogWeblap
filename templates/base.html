@@ -25,14 +25,36 @@
 </head>
 <body>
 <header class="header">
-    {% if 'logged_in' in session %}
-        <a href="/logout">Logout</a>
-    {% endif %}
+        <a class="menu" href="{{ url_for('about') }}">Rólam</a>
+        <a href="{{ url_for('index') }}"><img class="logo"
+                                              src="{{ url_for('static', filename='img/logo.png') }}"
+                                              alt="logo"></a>
+        <a class="menu" href="{{ url_for('default_info') }}">Bővebb információk</a>
 </header>
 
 <div class="container">
     {% block body %}{% endblock %}
 </div>
 
+{% if 'logged_in' in session %}
+    <div class="row admin">
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Admin
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{{ url_for('admin') }}">Cég információ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('admin_content') }}">Bejegyzések</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{{ url_for('logout') }}">Kijelentkezés</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endif %}
 </body>
 </html>

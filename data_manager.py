@@ -51,7 +51,7 @@ def get_public_categories():
         if category['public'] and category['category'] not in categories:
             categories.append(category['category'])
 
-    categories.sort()
+    categories.sort(reverse=True)
     return categories
 
 
@@ -101,21 +101,21 @@ def get_admin(cursor: RealDictCursor):
 
 @connection.connection_handler
 def save_content(cursor: RealDictCursor, data):
-    query = """INSERT INTO content(id, title, description, image, public, last_modified, category)
-                VALUES (DEFAULT, %s, %s, %s, %s, TIMESTAMP %s, %s)
+    query = """INSERT INTO content(id, title, description, image, image_direction, public, last_modified, category)
+                VALUES (DEFAULT, %s, %s, %s, %s, %s, TIMESTAMP %s, %s)
                 """
 
-    values = [data['title'], data['description'], data['image'], data['public'], data['last_modified'], data['category']]
+    values = [data['title'], data['description'], data['image'], data['image_direction'], data['public'], data['last_modified'], data['category']]
 
     cursor.execute(query, values)
 
 
 @connection.connection_handler
-def get_content(cursor: RealDictCursor, content_id):
+def get_content(cursor: RealDictCursor, content_id: str):
     query = """SELECT * FROM content
-    WHERE id = %s
-    """
-    cursor.execute(query, content_id)
+    WHERE id = %s;"""
+    print("content id:" + content_id)
+    cursor.execute(query, (content_id,))
 
     return cursor.fetchall()[0]
 

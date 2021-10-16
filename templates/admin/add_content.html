@@ -34,12 +34,16 @@
         <div class="mb-3">
             <label for="formFile" class="form-label">Kép hozzáadása</label>
             <input name="image" class="form-control" type="file" id="image" accept="image/png, image/jpeg">
+            {% if message %}
+                <p class="alert">Nem helyes kép formátum! ["PNG", "JPG", "JPEG", "GIF"]</p>
+            {% endif %}
         </div>
         <div class="mb-3 form-check">
             <input name="public" type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Publikus</label>
         </div>
         <button type="submit" class="btn btn-outline-primary"><i class="bi bi-save"></i> Mentés</button>
-        <a type="button" class="btn btn-outline-warning" href="/admin/content"><i class="bi bi-x-circle"></i> Bezárás</a>
+        <a type="button" class="btn btn-outline-warning" href="/admin/content"><i class="bi bi-x-circle"></i>
+            Bezárás</a>
     </form>
 {% endblock %}

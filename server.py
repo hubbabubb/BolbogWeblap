@@ -1,6 +1,7 @@
 from datetime import timedelta, datetime
 import data_manager
 import util
+import os
 
 from flask import Flask, render_template, session, redirect, request
 
@@ -11,7 +12,7 @@ app.secret_key = 'my super secret key'.encode('utf8')
 
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template('index.html')
 
 
@@ -91,10 +92,22 @@ def add_content():
 def save_content():
     image = request.files["image"]
     path = app.config['IMAGE_UPLOADS']
-    image_name = util.get_image(image, path)
+
+    image_name = None
+    image_direction = None
+    if image.filename:
+        image_name = util.get_image_name(image)
+
+        if not util.allowed_file(image.filename):
+            return render_template('admin/add_content.html', message='Not a valid file format!', categories=data_manager.get_all_categories())
+
+        image.save(os.path.join(path, image.filename))
+        image_direction = util.image_direction(image_name)
+
     data = {"title": request.form['title'],
             "description": request.form['content'],
             "image": image_name,
+            "image_direction": image_direction,
             "public": True if 'public' in request.form else False,
             "last_modified": datetime.now(),
             "category": request.form['category']}
