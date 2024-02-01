@@ -25,11 +25,11 @@
 </head>
 <body>
 <header class="header">
-        <a class="menu" href="{{ url_for('about') }}">Rólam</a>
-        <a href="{{ url_for('index') }}"><img class="logo"
+    <a class="menu" href="{{ url_for('default_info') }}">Bővebb információk</a>
+    <a href="{{ url_for('index') }}"><img class="logo"
                                               src="{{ url_for('static', filename='img/logo.png') }}"
-                                              alt="logo"></a>
-        <a class="menu" href="{{ url_for('default_info') }}">Bővebb információk</a>
+            alt="logo"></a>
+    <a class="menu" href="{{ url_for('about') }}">Kapcsolat</a>
 </header>
 
 <div class="container">

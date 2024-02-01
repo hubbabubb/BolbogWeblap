@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
+    {% if 'message' in session %}
+        <div class="alert alert-success" role="alert">
+            {{ session['message'] }}
+        </div>
+    {% endif %}
     <a class="btn btn-lg btn-primary" href="{{ url_for('admin_content') }}">Bejegyzések szerkesztése</a>
     <h1>Cég információk és elérhetőségek</h1>
     <form action="/admin/info" method="post">
@@ -37,7 +42,23 @@
             <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"
                       required>{{ basic_info['description'] }}</textarea>
         </div>
-    <button class="btn btn-outline-info" type="submit">Mentés</button>
+        <button class="btn btn-outline-info" type="submit">Mentés</button>
     </form>
     <hr class="custom">
+    <form method="post">
+        <p>Admin felhasználónév: {{ admin_info['user_name'] }}</p>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Jelszó megváltoztatása:</label>
+            <input type="password" name="password" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Jelszó megerősítése:</label>
+            <input type="password" name="confirm" class="form-control"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   required>
+        </div>
+        <button class="btn btn-outline-info" type="submit">Jelszó módosítás</button>
+    </form>
 {% endblock %}

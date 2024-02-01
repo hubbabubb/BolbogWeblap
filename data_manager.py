@@ -18,7 +18,7 @@ def get_all_content(cursor: RealDictCursor):
     query = """
         SELECT *
         FROM content
-        ORDER BY title"""
+        ORDER BY category"""
     cursor.execute(query)
     return cursor.fetchall()
 
@@ -51,7 +51,6 @@ def get_public_categories():
         if category['public'] and category['category'] not in categories:
             categories.append(category['category'])
 
-    categories.sort(reverse=True)
     return categories
 
 
@@ -101,11 +100,18 @@ def get_admin(cursor: RealDictCursor):
 
 @connection.connection_handler
 def save_content(cursor: RealDictCursor, data):
-    query = """INSERT INTO content(id, title, description, image, image_direction, public, last_modified, category)
-                VALUES (DEFAULT, %s, %s, %s, %s, %s, TIMESTAMP %s, %s)
+    query = """INSERT INTO content(id, title, description, image, image_direction, public, last_modified, category, image_source)
+                VALUES (DEFAULT, %s, %s, %s, %s, %s, TIMESTAMP %s, %s, %s)
                 """
 
-    values = [data['title'], data['description'], data['image'], data['image_direction'], data['public'], data['last_modified'], data['category']]
+    values = [data['title'],
+              data['description'],
+              data['image'],
+              data['image_direction'],
+              data['public'],
+              data['last_modified'],
+              data['category'],
+              data['image_source']]
 
     cursor.execute(query, values)
 
@@ -123,10 +129,16 @@ def get_content(cursor: RealDictCursor, content_id: str):
 @connection.connection_handler
 def update_content(cursor: RealDictCursor, data):
     query = """UPDATE content
-            SET title = %s, description = %s, public = %s, last_modified = %s, category = %s
+            SET title = %s, description = %s, public = %s, last_modified = %s, category = %s, image_source = %s
             WHERE id = %s
     """
-    values = [data['title'], data['description'], data['public'], data['last_modified'], data['category'], data['id']]
+    values = [data['title'], data['description'], data['public'], data['last_modified'], data['category'], data['image-source'], data['id']]
+    if data['image-source'] == '':
+        query = """UPDATE content SET title = %s, description = %s, public = %s, last_modified = %s, category = %s, 
+        image_source = %s, image = ''
+         WHERE id = %s"""
+        values = [data['title'], data['description'], data['public'], data['last_modified'], data['category'],
+                  data['image-source'], data['id']]
 
     cursor.execute(query, values)
 

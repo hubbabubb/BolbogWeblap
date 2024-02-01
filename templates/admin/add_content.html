@@ -37,6 +37,8 @@
             {% if message %}
                 <p class="alert">Nem helyes kép formátum! ["PNG", "JPG", "JPEG", "GIF"]</p>
             {% endif %}
+            <label for="imageSource" class="form-label">Kép forrás:</label>
+            <input type="text" name="image-source" class="form-control" id="imageSource" aria-describedby="emailHelp">
         </div>
         <div class="mb-3 form-check">
             <input name="public" type="checkbox" class="form-check-input" id="exampleCheck1">

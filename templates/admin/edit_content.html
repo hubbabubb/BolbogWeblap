@@ -31,10 +31,12 @@
             <label for="exampleFormControlTextarea1" class="form-label">Bejegyzés</label>
             <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="5" required>{{ content['description'] }}</textarea>
         </div>
-{#        <div class="mb-3">#}
+        <div class="mb-3">
 {#            <label for="formFile" class="form-label">Kép hozzáadása</label>#}
 {#            <input value="{{ content['image'] }}" name="image" class="form-control" type="file" id="formFile">#}
-{#        </div>#}
+            <label for="imageSource" class="form-label">Kép forrás:</label>
+            <input value="{{ content['image_source'] }}" type="text" name="image-source" class="form-control" id="imageSource" aria-describedby="emailHelp">
+        </div>
         <div class="mb-3 form-check">
             {% if content['public'] == True %}
                 <input checked name="public" type="checkbox" class="form-check-input" id="exampleCheck1">

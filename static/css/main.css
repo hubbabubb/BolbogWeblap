@@ -1,6 +1,7 @@
 body {
-    background: rgb(249,241,255);
-    background: linear-gradient(150deg, rgba(249,241,255,1) 0%, rgba(252,249,255,1) 100%);
+    background: rgb(245,255,241);
+    background: linear-gradient(169deg, rgba(245,255,241,1) 25%, rgb(204, 225, 183) 100%);
+    min-height: 100vh;
     font-family: 'Raleway', sans-serif;
 }
 

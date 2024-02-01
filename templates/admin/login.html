@@ -11,7 +11,7 @@
         <i class="bi bi-shield-lock"></i> Admin belépés
     </h2>
     {% if session['wrong_credentials'] == True %}
-        <p><i class="bi bi-exclamation-diamond"></i> Rossz felhasználó név vagy jelszó.</p>
+        <p class="alert"><i class="bi bi-exclamation-diamond"></i> Rossz felhasználó név vagy jelszó.</p>
     {% endif %}
     <form action="/login", method="post">
         <div class="mb-3">

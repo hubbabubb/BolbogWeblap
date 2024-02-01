@@ -13,6 +13,7 @@ app.secret_key = 'my super secret key'.encode('utf8')
 
 @app.route('/')
 def index():
+    print(util.hash_password('admin1234'))
     return render_template('index.html')
 
 
@@ -42,6 +43,7 @@ def login():
 def logout():
     session.pop('logged_in', None)
     session.pop('wrong_credentials', None)
+    session.pop('message', None)
 
     return redirect('/')
 
@@ -49,6 +51,8 @@ def logout():
 @app.route('/admin')
 @app.route('/admin/info', methods=['POST', 'GET'])
 def admin():
+    if 'message' in session:
+        session.pop('message', None)
     if 'logged_in' not in session:
         return redirect('/login')
 
@@ -62,6 +66,7 @@ def admin():
         }
 
         data_manager.update_info(data)
+        session['message'] = "Céginformációk elmentve!"
 
     basic_info = data_manager.get_company_info()
     admin_info = data_manager.get_admin()
@@ -107,6 +112,7 @@ def save_content():
     data = {"title": request.form['title'],
             "description": request.form['content'],
             "image": image_name,
+            "image_source": request.form['image-source'],
             "image_direction": image_direction,
             "public": True if 'public' in request.form else False,
             "last_modified": datetime.now(),
@@ -120,12 +126,15 @@ def save_content():
 @app.route('/admin/edit-content/<content_id>', methods=['POST', 'GET'])
 def edit_content(content_id):
     if request.method == "POST":
+        print(request.form['image-source'])
         data = {"id": content_id,
                 "title": request.form['title'],
                 "description": request.form['content'],
                 "public": True if 'public' in request.form else False,
                 "last_modified": datetime.now(),
-                "category": request.form['category']}
+                "category": request.form['category'],
+                "image-source": request.form['image-source']
+                }
 
         data_manager.update_content(data)
 

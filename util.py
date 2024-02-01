@@ -31,26 +31,6 @@ def get_image_name(image):
     image_name = "images/" + filename
     return image_name
 
-
-# def highlight_text(search_results, search):
-#     new_results = []
-#
-#     for highlight in search_results:
-#         new_title = re.sub(re.escape(search), f'<mark>{search.upper()}</mark>', highlight['title'], flags=re.IGNORECASE)
-#         new_message = re.sub(re.escape(search), f'<mark>{search.upper()}</mark>', highlight['message'], flags=re.IGNORECASE)
-#         new_dict_row = {'id': highlight['id'],
-#                         'submission_time': highlight['submission_time'],
-#                         'view_number': highlight['view_number'],
-#                         'title': new_title,
-#                         'message': new_message,
-#                         'vote_number': highlight['vote_number'],
-#                         'image': highlight['image'],
-#                         }
-#         new_results.append(new_dict_row)
-#
-#     return new_results
-
-
 def image_direction(image_name):
     image = Image.open('static/' + image_name)
     direction = 'equal'
