@@ -1,28 +1,25 @@
 .categories {
     width: 100%;
-    padding: 15px 50px 15px 50px;
     margin-bottom: 40px;
-    background: rgb(82,57,28);
-    background: radial-gradient(circle, rgba(82,57,28,1) 0%, rgba(255,255,255,0) 100%);
+    background: #D2C9B0;
     display: flex;
     justify-content: center;
     align-content: center;
-    white-space: pre-wrap;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    z-index: 2;
 }
 
 .category {
-    color: white;
+    color: black;
     text-decoration: none;
-    font-family: 'Montserra t', sans-serif;
     font-size: 26px;
     font-weight: 400;
     transition: color 0.5s;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .category:hover {
-    color: #050505;
+    color: #D4AF37;
 }
 
 .content {
@@ -49,4 +46,29 @@
 .quote {
     font-style: italic;
     text-align: center;
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+    .categories {
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: left;
+        overflow: hidden;
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding-top: 2rem;
+    }
+
+    .category {
+        padding-left: 2rem;
+        margin-top: 0.5rem;
+    }
 }

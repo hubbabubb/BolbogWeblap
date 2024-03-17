@@ -163,7 +163,7 @@ def default_info():
     category = categories[0]
     content = data_manager.get_public_content_by_category(category)
 
-    return render_template('information.html', categories=categories, blogs=content)
+    return render_template('information.html', categories=categories, blogs=content, submenu=False)
 
 
 @app.route('/info/<category>')
@@ -171,7 +171,7 @@ def info(category):
     categories = data_manager.get_public_categories()
     content = data_manager.get_public_content_by_category(category)
 
-    return render_template('information.html', categories=categories, blogs=content)
+    return render_template('information.html', categories=categories, blogs=content, submenu=True, selected_category=category)
 
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="p-3">
     {% if 'message' in session %}
         <div class="alert alert-success" role="alert">
             {{ session['message'] }}
@@ -61,4 +62,5 @@
         </div>
         <button class="btn btn-outline-info" type="submit">Jelszó módosítás</button>
     </form>
+</div>
 {% endblock %}

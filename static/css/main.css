@@ -1,12 +1,11 @@
 body {
     background: rgb(245,255,241);
     background: linear-gradient(169deg, rgba(245,255,241,1) 25%, rgb(204, 225, 183) 100%);
-    min-height: 100vh;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Marvel', sans-serif !important;
 }
 
 p {
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     font-size: 20px;
     white-space: pre-wrap;
 }
@@ -21,11 +20,38 @@ hr.custom {
     margin-bottom: 50px;
 }
 
-.container {
-    margin-top: 150px;
+.body-container {
+    margin: 70px 0 0 0;
+    animation: fadeInAnimation ease 300ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    min-height: 100vh;
 }
 
 h1 {
     padding-top: 20px;
     padding-bottom: 15px;
+    font-weight: 700;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(-30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .body-container {
+        margin-top: 50px;
+    }
+
+    hr.custom {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
 }

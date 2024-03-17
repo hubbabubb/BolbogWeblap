@@ -4,38 +4,28 @@
 }
 
 .home-image {
-    margin: 50px 0 50px 0;
+    margin: 50px 0 25px 0;
     object-fit: cover;
     object-position: top;
     height: 400px;
-    width: 70%;
     border-radius: 15px;
     box-shadow: 5px 5px;
     animation-name: image-flow;
     animation-duration: 80s;
     animation-iteration-count: infinite;
+    transition-timing-function: ease-in;
 }
 
 @keyframes image-flow {
     0% {
-        object-position: top;
-    }
-    50% {
         object-position: bottom;
     }
-    100% {
+    50% {
         object-position: top;
     }
-}
-
-.row {
-    padding: 0 100px 0 100px;
-}
-
-h3 {
-    font-size: 34px;
-    font-weight: 100;
-    font-style: italic;
+    100% {
+        object-position: bottom;
+    }
 }
 
 .contentDiv {
@@ -59,4 +49,21 @@ h3 {
     margin-left: -25px;
     position: absolute;
     width: 50px;
+    z-index: 10;
+}
+
+.body-container {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .home-image {
+        margin: 10px 0 5px 0;
+        height: 300px;
+        border-radius: 15px;
+    }
+
+    .w-75 {
+        width: 90% !important;
+    }
 }

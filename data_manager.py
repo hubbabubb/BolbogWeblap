@@ -18,7 +18,7 @@ def get_all_content(cursor: RealDictCursor):
     query = """
         SELECT *
         FROM content
-        ORDER BY category"""
+        ORDER BY last_modified ASC"""
     cursor.execute(query)
     return cursor.fetchall()
 
